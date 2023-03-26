@@ -4751,7 +4751,7 @@ class PlayState extends MusicBeatState
 
 			var holdControls:Array<Bool> = [left, down, up, right];
 			if (SONG.isRing) {
-				holdControls = [left, down, spaceM, up, right];
+				holdControls = [left, down, spaceD, up, right];
 			} // checks if song has a ring note mech
 
 			if(ClientPrefs.mariomaster) {
