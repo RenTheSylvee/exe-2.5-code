@@ -1,16 +1,17 @@
-# Friday Night Funkin': VS Sonic.EXE 2.5/3.0 cancelled build Android port
+# Friday Night Funkin': VS Sonic.EXE 2.5/3.0 Cancelled Build Android Port
+--------------------
+### **This Android Port** was made by **3 Porters**:
+##### •**MaysLastPlay** - Main Coder/The Port Owner
 
-### The official Android port was maked by 3 porters:
+##### • **MarioMaster** - Coder/Porter(The **Real One** they say, he's a great porter)
 
- • MaysLastPlay - Coder and owner
-
- • MarioMaster - Coder and porter - ( The real one, but he is good porter)
-
- • Stefan2008 - Coder and porter - ( The bad porter beacuse he didn't ported mod on source or coded, but he's want to help )
-
-
-### FNF Android porting stuff maked by:
-
- • Mihai Alexandru (MAJigsaw77) - Android porter for Android support 
-
-# More details will be here soon!
+##### • **Stefan2008** - Coder/Porter(The ~~Bad Porter~~ Good Porter, beacuse he didn't ported any Mods on Source or Hard-coded, but he's there to help! Thank you)
+--------------------
+##### • **Ralsei** - Why am I here? XD. I'm everywhere heheheh(Not a Porter/Coder, I just came here out of nowhere)
+--------------------
+### FNF Android Porting Stuff made by:
+##### • **Mihai Alexandru (MAJigsaw77 - GitHub l, MA Jigsaw)** - Android Support Creater/Owner, The OG
+--------------------
+### Port Update:
+ • Currently on **Fixing Bugs**, it'll release soon.
+ 
