@@ -2178,10 +2178,11 @@ class PlayState extends MusicBeatState
 		if (SONG.isRing || SONG.song.toLowerCase()=='chaos') {
 		addMobileControls(true, true);			
 		
-		if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard') {
+		/*if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard') {
 		addVirtualPad(NONE, DODGE);
 		addVirtualPadCamera(false);
-		virtualPad.visible = false;
+		virtualPad.visible = false;*/
+		
 		}
 
 		}else{
@@ -2880,9 +2881,9 @@ class PlayState extends MusicBeatState
 		}
 		        #if mobile
                 mobileControls.visible = true;
-				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard'){
-				virtualPad.visible = true;
-				}
+				//if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard'){
+				//virtualPad.visible = true;
+				//}
                 #end
 
 		inCutscene = false;
@@ -5878,9 +5879,9 @@ class PlayState extends MusicBeatState
 		}
 	        #if mobile
                 mobileControls.visible = false;
-				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard'){
-				virtualPad.visible = true;
-				}
+				//if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard'){
+				//virtualPad.visible = true;
+				//}
                 #end
 
 		timeBarBG.visible = false;
