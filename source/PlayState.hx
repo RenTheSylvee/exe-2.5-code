@@ -6847,12 +6847,12 @@ class PlayState extends MusicBeatState
 		video.visible = false;
 		video.playVideo(Paths.video(name));
 		video.openingCallback = function(){
-			video.visible=true;
+		video.visible = true;
 		}
 		add(video);
 		video.finishCallback = function() {
-			trace("video gone");
-			remove(video);
+			//trace("video gone");
+			//remove(video);
 			video.destroy();
 		}
 	}
