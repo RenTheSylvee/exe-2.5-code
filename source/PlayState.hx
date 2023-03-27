@@ -67,8 +67,7 @@ import flixel.tweens.FlxTween.FlxTweenManager;
 import flixel.system.scaleModes.StageSizeScaleMode;
 import flixel.system.scaleModes.BaseScaleMode;
 
-/*import mobile.flixel.FlxHitbox;
-import mobile.MobileControls;*/
+import mobile.MobileControls;
 
 using StringTools;
 
@@ -2176,14 +2175,20 @@ class PlayState extends MusicBeatState
 		bottomBar.cameras = [camOther];
 		
 		#if mobile
-			if (SONG.isRing) {
-				addHitbox(true);
-				addHitboxCamera();
-				hitbox.visible = false;
-			} else {
-				addMobileControls(false);  
-				mobileControls.visible = false;
-			}
+		if (SONG.isRing || SONG.song.toLowerCase()=='chaos') {
+		addMobileControls(true, true);			
+		
+		if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard') {
+		addVirtualPad(NONE, DODGE);
+		addVirtualPadCamera(false);
+		virtualPad.visible = false;
+		}
+
+		}else{
+		addMobileControls(false, true);  
+		}
+         mobileControls.visible = false;
+	
 		#end
 
 		var centerP = new FlxSprite(0, 0);
@@ -2562,6 +2567,13 @@ class PlayState extends MusicBeatState
 		CoolUtil.precacheSound('missnote2');
 		CoolUtil.precacheSound('missnote3');
 
+        keysArray = [
+			ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_left')),
+			ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_down')),
+			ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_up')),
+			ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_right'))
+		];
+
 		if (SONG.isRing)
 		{
 			keysArray = [
@@ -2571,15 +2583,8 @@ class PlayState extends MusicBeatState
 				ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_up')),
 				ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_right'))
 			];
-		} else {
-			keysArray = [
-				ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_left')),
-				ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_down')),
-				ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_up')),
-				ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_right'))
-			];
-		} //Ralsei' fix, when triple trouble, it'll go get 5k input
-
+		}
+	
         if(!ClientPrefs.mariomaster) //what
 		{
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
@@ -2873,14 +2878,11 @@ class PlayState extends MusicBeatState
 			callOnLuas('onStartCountdown', []);
 			return;
 		}
-
-		#if mobile
-			if (SONG.isRing) {
-				hitbox.visible = true;
-			} else {
-				mobileControls.visible = true;
-			}
-		#end
+		        #if mobile
+                mobileControls.visible = true;
+				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard')
+				virtualPad.visible = true;
+                #end
 
 		inCutscene = false;
 		var ret:Dynamic = callOnLuas('onStartCountdown', []);
@@ -3876,7 +3878,7 @@ class PlayState extends MusicBeatState
 		managePopups();
 		modManager.update(elapsed);
 
-		if (canDodge && FlxG.keys.justPressed.SPACE)
+		if (canDodge && FlxG.keys.justPressed.SPACE || controls.NOTE_SPACE)
 		{
 			dodging = true;
 			boyfriend.playAnim('dodge', true);
@@ -4739,62 +4741,98 @@ class PlayState extends MusicBeatState
 				});
 			}
 
-			FlxG.watch.addQuick("rendered notes", notes.members.length);
+				FlxG.watch.addQuick("rendered notes", notes.members.length);
 			// reset bf's animation
-			// Da Note Input-Related Code
+								
 			var up = controls.NOTE_UP;
 			var right = controls.NOTE_RIGHT;
 			var down = controls.NOTE_DOWN;
 			var left = controls.NOTE_LEFT;
-			var spaceD = controls.NOTE_SPACE; // original space input
-			var spaceM = hitbox.buttonDodge.pressed; // for mobile space hitbox
+			var space = controls.NOTE_SPACE;
+														   
 
 			var holdControls:Array<Bool> = [left, down, up, right];
-			if (SONG.isRing) {
-				holdControls = [left, down, spaceD, up, right];
-			} // checks if song has a ring note mech
+			if (SONG.isRing)
+				holdControls = [left, down, space, up, right];
+										   
 
-			if(ClientPrefs.mariomaster) {
-				var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_SPACE_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
-				if(controlArray.contains(true)) {
-					for (i in 0...controlArray.length) {
-						if(controlArray[i]) {
-							onKeyPress(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, true, -1, keysArray[i][0]));
-						}
-					}
-				}
-				if (holdControls.contains(true) && generatedMusic) {
-					notes.forEachAlive(function(daNote:Note) {
-						if ((daNote.parentNote != null && daNote.parentNote.wasGoodHit)
-							&& daNote.isSustainNote
-							&& daNote.canBeHit
-							&& daNote.mustPress
-							&& holdControls[daNote.noteData]
-							&& !daNote.tooLate)
-							goodNoteHit(daNote);
-					});
-				}
-
-				if ((boyfriend != null && boyfriend.animation != null)
-					&& (boyfriend.holdTimer > Conductor.stepCrochet * (4 / 1000) && (!holdControls.contains(true) || cpuControlled))) {
-					if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss')) {
-						boyfriend.dance();
-					}
-				}
-				cameraDisplacement(boyfriend, true);
-				cameraDisplacement(dad, false);
-
-				var controlArray:Array<Bool> = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_SPACE_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
-				if(controlArray.contains(true)) {
-					for (i in 0...controlArray.length) {
-						if(controlArray[i]) {
-							onKeyRelease(new KeyboardEvent(KeyboardEvent.KEY_UP, true, true, -1, keysArray[i][0]));
-						}
-					}
+	       if(ClientPrefs.mariomaster) //dont ask, thanks
+		{
+			if (SONG.isRing){
+			var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_SPACE_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
+			if(controlArray.contains(true))
+			{
+				for (i in 0...controlArray.length)
+				{
+					if(controlArray[i])
+						onKeyPress(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, true, -1, keysArray[i][0]));  
 				}
 			}
+		    }else{
+			var controlArray:Array<Bool> = [controls.NOTE_LEFT_P, controls.NOTE_DOWN_P, controls.NOTE_UP_P, controls.NOTE_RIGHT_P];
+			if(controlArray.contains(true))
+			{
+				for (i in 0...controlArray.length)
+				{
+					if(controlArray[i])
+			    		onKeyPress(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, true, -1, keysArray[i][0]));  
+				}
+			}
+		    }
+		
+		}
+
+			if (holdControls.contains(true) && /*!boyfriend.stunned && */ generatedMusic)
+			{
+				notes.forEachAlive(function(daNote:Note)
+				{
+					if ((daNote.parentNote != null && daNote.parentNote.wasGoodHit)
+						&& daNote.isSustainNote
+						&& daNote.canBeHit
+						&& daNote.mustPress
+						&& holdControls[daNote.noteData]
+						&& !daNote.tooLate)
+						goodNoteHit(daNote);
+				});
+			}
+
+			if ((boyfriend != null && boyfriend.animation != null)
+				&& (boyfriend.holdTimer > Conductor.stepCrochet * (4 / 1000) && (!holdControls.contains(true) || cpuControlled)))
+			{
+				if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
+					boyfriend.dance();
+			}
+			cameraDisplacement(boyfriend, true);
+			cameraDisplacement(dad, false);
+		}
+        if(ClientPrefs.mariomaster)	  
+		{
+			if(SONG.isRing){
+			var controlArray:Array<Bool> = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_SPACE_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
+			if(controlArray.contains(true))										  
+			{
+				for (i in 0...controlArray.length)
+				{
+					if(controlArray[i])
+						onKeyRelease(new KeyboardEvent(KeyboardEvent.KEY_UP, true, true, -1, keysArray[i][0]));
+	  
+				}
+			}
+		    }else{
+			var controlArray:Array<Bool> = [controls.NOTE_LEFT_R, controls.NOTE_DOWN_R, controls.NOTE_UP_R, controls.NOTE_RIGHT_R];
+			if(controlArray.contains(true))										  
+			{
+				for (i in 0...controlArray.length)
+				{
+					if(controlArray[i])
+					onKeyRelease(new KeyboardEvent(KeyboardEvent.KEY_UP, true, true, -1, keysArray[i][0]));
+		  
+					}
+			}
+		    }
 		}
 		checkEventNote();
+
 
 		if (!inCutscene)
 		{
@@ -5837,13 +5875,11 @@ class PlayState extends MusicBeatState
 			FlxG.mouse.visible = false;
 			FlxG.mouse.unload();
 		}
-		#if mobile
-			if (SONG.isRing) {
-				hitbox.visible = false;
-			} else {
-				mobileControls.visible = false;
-			}
-		#end
+	        #if mobile
+                mobileControls.visible = false;
+				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard')
+				virtualPad.visible = true;
+                #end
 
 		timeBarBG.visible = false;
 		timeBar.visible = false;
