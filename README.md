@@ -10,7 +10,7 @@
 - **Ralsei** - Why am I here? XD. I'm everywhere heheheh(Not a Porter/Coder, I just came here out of nowhere)
 --------------------
 ### FNF Android Porting Stuff made by:
-- **Mihai Alexandru (MAJigsaw77 - GitHub l, MA Jigsaw)** - Android Support Creater/Owner, The OG
+- **Mihai Alexandru (MAJigsaw77 - GitHub, MA Jigsaw)** - Android Support Creater/Owner, The OG
 --------------------
 ### Port Update:
 - Currently on **Fixing Bugs**, it'll release soon.
