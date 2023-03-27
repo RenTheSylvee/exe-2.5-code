@@ -6840,17 +6840,17 @@ class PlayState extends MusicBeatState
 		video.scrollFactor.set();
 		video.cameras = [camHUD];
 		video.shader = new GreenScreenShader();
-		video.visible=false;
-		video.finishCallback = function(){
-			trace("video gone");
-			remove(video);
-			video.destroy();
-		}
+		video.visibl e= false;
 		video.playVideo(Paths.video(name));
 		video.openingCallback = function(){
 			video.visible=true;
 		}
 		add(video);
+		video.finishCallback = function() {
+			trace("video gone");
+			remove(video);
+			video.destroy();
+		}
 	}
   #end
 
