@@ -6853,7 +6853,7 @@ class PlayState extends MusicBeatState
 		video.finishCallback = function() {
 			//trace("video gone");
 			//remove(video);
-			video.destroy();
+			//video.destroy(); //temporarily removed for some reason(will add it back later)
 		}
 	}
   #end
