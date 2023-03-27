@@ -2880,8 +2880,9 @@ class PlayState extends MusicBeatState
 		}
 		        #if mobile
                 mobileControls.visible = true;
-				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard')
+				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard'){
 				virtualPad.visible = true;
+				}
                 #end
 
 		inCutscene = false;
@@ -5877,8 +5878,9 @@ class PlayState extends MusicBeatState
 		}
 	        #if mobile
                 mobileControls.visible = false;
-				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard')
+				if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard'){
 				virtualPad.visible = true;
+				}
                 #end
 
 		timeBarBG.visible = false;
