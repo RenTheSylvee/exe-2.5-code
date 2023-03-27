@@ -2175,7 +2175,7 @@ class PlayState extends MusicBeatState
 		bottomBar.cameras = [camOther];
 		
 		#if mobile
-		if (SONG.isRing || SONG.song.toLowerCase()=='chaos') {
+		if (SONG.isRing) {
 		addMobileControls(true, true);			
 		
 		/*if (FlxG.save.data.controlsMode != 'Hitbox' || FlxG.save.data.controlsMode != 'Keyboard') {
@@ -7366,6 +7366,9 @@ class PlayState extends MusicBeatState
 
 					fgTree1.alpha = 0;
 					fgTree2.alpha = 0;
+
+					grassXeno.angle = -30;
+					backtreesXeno.y += 70;
 
 					backtreesXeno.visible = true;
 					grassXeno.visible = true;
