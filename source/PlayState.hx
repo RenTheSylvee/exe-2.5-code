@@ -6840,7 +6840,7 @@ class PlayState extends MusicBeatState
 		video.scrollFactor.set();
 		video.cameras = [camHUD];
 		video.shader = new GreenScreenShader();
-		video.visibl e= false;
+		video.visible= false;
 		video.playVideo(Paths.video(name));
 		video.openingCallback = function(){
 			video.visible=true;
