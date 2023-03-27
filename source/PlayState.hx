@@ -2182,8 +2182,6 @@ class PlayState extends MusicBeatState
 		addVirtualPad(NONE, DODGE);
 		addVirtualPadCamera(false);
 		virtualPad.visible = false;*/
-		
-		}
 
 		}else{
 		addMobileControls(false, true);  
