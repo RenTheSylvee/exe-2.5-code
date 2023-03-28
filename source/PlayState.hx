@@ -3869,7 +3869,7 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		//if (SONG.song.toLowerCase() == 'fight-or-flight') {
-		if (curSong == "fight-or-flight")
+		if (curSong == "fight-or-flight") {
 			zoomStarved = FlxG.camera.zoom / 0.75; //camGame is not working I think
 			//boyfriend.scale.set(zoomStarved, zoomStarved); // this part was wierd
 			boyfriend.scale.x = zoomStarved;
