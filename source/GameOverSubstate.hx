@@ -244,6 +244,12 @@ class GameOverSubstate extends MusicBeatSubstate
 			if (bf.animation.curAnim.finished)
 			{
 				coolStartDeath();
+				#if mobile
+					if (PlayState.SONG.song.toLowerCase() == 'fight-or-flight') {
+					addVirtualPad(NONE, A_B);
+					addVirtualPadCamera();
+					}
+				#end
 				bf.startedDeath = true;
 				canAction = true;
 			}
@@ -270,11 +276,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			default: FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
-			#if mobile
-			case "fight-or-flight":
-					addVirtualPad(NONE, A_B);
-					addVirtualPadCamera();
-			#end
 			case "too-fest":
 		}
 	}
