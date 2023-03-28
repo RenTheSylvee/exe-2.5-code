@@ -192,7 +192,12 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		var exclude:Array<Int> = [];
 
-                #if mobile addVirtualPad(NONE, A_B); #end
+	#if mobile
+		if (SONG.song.toLowerCase() != 'fight-or-flight') {
+			addVirtualPad(NONE, A_B);
+			addVirtualPadCamera();
+		}
+	#end
 	}
 
 	override function update(elapsed:Float)
@@ -265,6 +270,11 @@ class GameOverSubstate extends MusicBeatSubstate
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			default: FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
+			#if mobile
+			case "fight-or-flight"
+					addVirtualPad(NONE, A_B);
+					addVirtualPadCamera();
+			#end
 			case "too-fest":
 		}
 	}
