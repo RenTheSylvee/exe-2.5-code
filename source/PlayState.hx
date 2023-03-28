@@ -3874,7 +3874,6 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'fight-or-flight') {
 			zoomStarved = camGame.zoom / 0.75;
       boyfriend.scale.set(zoomStarved, zoomStarved);
-					camFollow.x += 20;
 			boyfriend.x = starvedBFX * zoomStarved;
 			boyfriend.y = starvedBFY * zoomStarved;
 		} //from lua to source XD
