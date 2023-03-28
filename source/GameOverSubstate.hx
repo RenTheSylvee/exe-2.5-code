@@ -40,6 +40,9 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static var loopSoundName:String = 'gameOver';
 	public static var endSoundName:String = 'gameOverEnd';
 
+	// for starved gameover
+	public var starvedTrigger:Bool = false;
+
 	public static function resetVariables() {
 		characterName = 'bf';
 		deathSoundName = 'fnf_loss_sfx';
@@ -193,7 +196,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		var exclude:Array<Int> = [];
 
 	#if mobile
-		if (PlayState.SONG.song.toLowerCase() != 'fight-or-flight') {
+		if (starvedTrigger) {
 			addVirtualPad(NONE, A_B);
 			addVirtualPadCamera();
 		}
