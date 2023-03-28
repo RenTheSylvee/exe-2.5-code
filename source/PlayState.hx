@@ -2623,9 +2623,9 @@ class PlayState extends MusicBeatState
 			FadeTransitionSubstate.nextCamera = camOther;
 		}
 
-
-
-
+		if (SONG.song.toLowerCase() != 'fight-or-flight') {
+			GameOverSubstate.starvedTrigger = true;
+		}
 
 		super.create();
 	}
