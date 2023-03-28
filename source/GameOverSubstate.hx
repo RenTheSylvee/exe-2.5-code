@@ -271,7 +271,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			default: FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
 			#if mobile
-			case "fight-or-flight"
+			case "fight-or-flight":
 					addVirtualPad(NONE, A_B);
 					addVirtualPadCamera();
 			#end
