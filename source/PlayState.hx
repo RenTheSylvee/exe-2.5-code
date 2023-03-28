@@ -508,6 +508,14 @@ class PlayState extends MusicBeatState
 	//nebs modchart shit
 	var curShader:ShaderFilter;
 
+	//for fight-or-flight
+	var starvedBFX:Int = 200;
+	var starvedBFY:Int = 200;
+	var starvedZoom:Int = 0;
+	var dZoom:Int = 1;
+	var bZoom:Int = 0.85;
+	var zoomStarved:Int = 0;
+
 	override function draw()
 	{
 		super.draw();
@@ -3828,7 +3836,7 @@ class PlayState extends MusicBeatState
 					camFollow.x += 20;
 					camFollow.y += 70;
 				case "starved":
-					FlxG.camera.zoom = FlxMath.lerp(1.35, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
+					FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1)); //1.35 source code zoom
 					camFollow.x += 20;
 					camFollow.y -= 70;
 				case "beast_chaotix":
@@ -3854,6 +3862,8 @@ class PlayState extends MusicBeatState
 
 			switch (char.curCharacter)
 			{
+				case "bf-tails":
+					FlxG.camera.zoom = FlxMath.lerp(bZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
 				default:
 					FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
 			}
@@ -3863,7 +3873,12 @@ class PlayState extends MusicBeatState
 	var starvedSpeed:Float = 15;
 	override public function update(elapsed:Float)
 	{
-
+		if (SONG.song.toLowerCase() == 'fight-or-flight') {
+			zoomStarved = camGame.zoom / 0.75;
+			boyfriend.scale.set(zoomshit, zoomshit);
+			boyfriend.x = starvedBFX * zoomStarved;
+			boyfriend.y = starvedBFY * zoomStarved;
+		} //from lua to source XD
 		if (isFixedAspectRatio)
 			FlxG.fullscreen = false;
 
@@ -8850,5 +8865,4 @@ class PlayState extends MusicBeatState
 
 		return super.switchTo(state);
 	}
-
 }
