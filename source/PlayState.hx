@@ -3873,8 +3873,8 @@ class PlayState extends MusicBeatState
 			//boyfriend.scale.set(zoomStarved, zoomStarved); // this part was wierd
 			boyfriend.scale.x = zoomStarved;
 			boyfriend.scale.y = zoomStarved;
-			boyfriend.x = starvedBFX * zoomStarved;
-			boyfriend.y = starvedBFY * zoomStarved;
+			boyfriend.x += starvedBFX * zoomStarved;
+			boyfriend.y += starvedBFY * zoomStarved;
 		} //from lua to source XD
 		if (isFixedAspectRatio)
 			FlxG.fullscreen = false;
