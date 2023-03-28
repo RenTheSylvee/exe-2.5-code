@@ -140,10 +140,10 @@ class PlayState extends MusicBeatState
 	#end
 
 	//for fight-or-flight
-  var starvedBFX:Float = 200.0;
+	var starvedBFX:Float = 300.0; //200 is not aligned
 	var starvedBFY:Float = 0.0;
-	var dZoom:Float = 1.0;
-	var bZoom:Float = 0.85;
+	var dZoom:Float = 1.35; //1.0
+	var bZoom:Float = 1.0; //0.8
 	var zoomStarved:Float = 0.0;
 
 	public var BF_X:Float = 770;
