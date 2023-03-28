@@ -3836,6 +3836,7 @@ class PlayState extends MusicBeatState
 					camFollow.y += 70;
 				case "starved":
 					FlxG.camera.zoom = FlxMath.lerp(dZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1)); //1.35 source code zoom
+					camFollow.x += 20;
 					camFollow.y -= 70;
 				case "beast_chaotix":
 					FlxG.camera.zoom = FlxMath.lerp(1.2, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
@@ -3873,7 +3874,7 @@ class PlayState extends MusicBeatState
 	{
 		if (SONG.song.toLowerCase() == 'fight-or-flight') {
 			zoomStarved = camGame.zoom / 0.75;
-      boyfriend.scale.set(zoomStarved, zoomStarved);
+			boyfriend.scale.set(zoomStarved, zoomStarved);
 			boyfriend.x = starvedBFX * zoomStarved;
 			boyfriend.y = starvedBFY * zoomStarved;
 		} //from lua to source XD
