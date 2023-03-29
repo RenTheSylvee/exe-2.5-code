@@ -3891,7 +3891,7 @@ class PlayState extends MusicBeatState
 		managePopups();
 		modManager.update(elapsed);
 
-		if (canDodge && FlxG.keys.justPressed.SPACE || controls.NOTE_SPACE)
+		if (canDodge && FlxG.keys.justPressed.SPACE || canDodge && controls.NOTE_SPACE)
 		{
 			dodging = true;
 			boyfriend.playAnim('dodge', true);
