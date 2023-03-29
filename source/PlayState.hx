@@ -139,13 +139,6 @@ class PlayState extends MusicBeatState
 	public var gfMap:Map<String, Character> = new Map<String, Character>();
 	#end
 
-	//for fight-or-flight
-	var starvedBFX:Float = 200.0;
-	var starvedBFY:Float = 0.0;
-	var dZoom:Float = 1.35; //1.0
-	var bZoom:Float = 1.0; //0.8
-	var zoomStarved:Float = 0.0;
-
 	public var BF_X:Float = 770;
 	public var BF_Y:Float = 100;
 	public var DAD_X:Float = 100;
@@ -3866,12 +3859,18 @@ class PlayState extends MusicBeatState
 	}
 
 	var starvedSpeed:Float = 15;
+
+	//for fight-or-flight
+	var starvedBFX:Float = 900.0;
+	var starvedBFY:Float = 0.0;
+	var dZoom:Float = 1.35; //1.0
+	var bZoom:Float = 1.0; //0.8
+	var zoomStarved:Float = 0.0;
+
 	override public function update(elapsed:Float)
 	{
-		//if (SONG.song.toLowerCase() == 'fight-or-flight') {
-		if (curSong == "fight-or-flight") {
-			zoomStarved = FlxG.camera.zoom / 0.75; //camGame is not working I think
-			//boyfriend.scale.set(zoomStarved, zoomStarved); // this part was wierd
+		if (SONG.song.toLowerCase() == 'fight or flight') {
+			zoomStarved = FlxG.camera.zoom / 0.75;
 			boyfriend.scale.x = zoomStarved;
 			boyfriend.scale.y = zoomStarved;
 			boyfriend.x = starvedBFX * zoomStarved;
