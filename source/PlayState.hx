@@ -5888,7 +5888,9 @@ class PlayState extends MusicBeatState
 				trace("A fatal error has ACTUALLY occured: " + e);
 			}
 			#end*/
-			
+
+	    Application.current.window.alert('A FATAL ERROR HAS OCCURRED', 'Vs Sonic.exe Android');
+
 			FlxG.mouse.visible = false;
 			FlxG.mouse.unload();
 		}
