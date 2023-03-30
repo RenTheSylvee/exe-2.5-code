@@ -96,18 +96,15 @@ class OptionsState extends MusicBeatState
 			for (item in grpOptions.members) {
 				item.alpha = 0;
 			}
-			/*#if mobile
+			#if mobile
 				removeVirtualPad();
-			#end*/ // Global Adding Controls
+			#end // Global Adding Controls
 			switch(options[curSelected]) {
 
 				case 'Controls':
 					openSubState(new ControlsSubstate()); //cry, you're not on mobile lol
 				case 'Mobile Controls':
 					openSubState(new mobile.MobileControlsSubState());
-					#if mobile
-						removeVirtualPad();
-					#end
 				case 'Preferences':
 					openSubState(new PreferencesSubstate());
 			}
