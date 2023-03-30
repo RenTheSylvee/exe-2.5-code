@@ -5897,7 +5897,7 @@ class PlayState extends MusicBeatState
 		}
 	        #if mobile
                 mobileControls.visible = false;
-				if (ClientPrefs.isvpad && SONG.isRing MobileControls.mode != 'Hitbox' && MobileControls.mode != 'Keyboard'){
+				if (ClientPrefs.isvpad && SONG.isRing && MobileControls.mode != 'Hitbox' && MobileControls.mode != 'Keyboard'){
 			  virtualPad.visible = true;
 				}
                 #end
