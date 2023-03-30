@@ -3863,7 +3863,7 @@ class PlayState extends MusicBeatState
 
 	//for fight-or-flight
 	var starvedBFX:Float = 100.0;
-	var starvedBFY:Float = 0.0;
+	var starvedBFY:Float = 150.0;
 	var dZoom:Float = 1.35; //1.0
 	var bZoom:Float = 1.0; //0.8
 	var zoomStarved:Float = 0.0;
