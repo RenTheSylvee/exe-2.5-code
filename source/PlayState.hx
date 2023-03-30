@@ -5889,8 +5889,6 @@ class PlayState extends MusicBeatState
 			}
 			#end*/
 
-	    Application.current.window.alert('A FATAL ERROR HAS OCCURRED', 'Vs Sonic.exe Android');
-
 			FlxG.mouse.visible = false;
 			FlxG.mouse.unload();
 		}
