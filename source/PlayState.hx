@@ -7387,9 +7387,6 @@ class PlayState extends MusicBeatState
 					fgTree1.alpha = 0;
 					fgTree2.alpha = 0;
 
-					grassXeno.angle = -30;
-					backtreesXeno.y += 70;
-
 					backtreesXeno.visible = true;
 					grassXeno.visible = true;
 					p3staticbg.visible = true;
