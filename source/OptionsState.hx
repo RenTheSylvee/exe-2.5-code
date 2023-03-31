@@ -228,8 +228,8 @@ class ControlsSubstate extends MusicBeatSubstate {
 				grpOptions.forEachAlive(function(spr:Alphabet) {
 					spr.alpha = 0;
 				});
-				//close(); wierd man
-				closeSubState(); // this can save the settings
+				close(); wierd man
+				//closeSubState(); // this can save the settings
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 			}
 
@@ -606,8 +606,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				showCharacter.alpha = 0;
 			}
 			descText.alpha = 0;
-			//close(); this too
-			closeSubState();
+			close(); this too
+			//closeSubState();
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
