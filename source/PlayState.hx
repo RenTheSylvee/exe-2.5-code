@@ -1638,10 +1638,10 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 280;
 				gf.x += 1000;
 				gf.y += 350;
-				.x -= 150;
+				/*dad2.x -= 150;
 				dad2.y += 25;
 
-				flyTarg = dad2; // fucking smart genious and intellegent
+				flyTarg = dad2; // fucking smart genious and intellegent*/
 				flyState = 'sHover';
 
 				boyfriend.setGraphicSize(Std.int(boyfriend.width * 0.9));
