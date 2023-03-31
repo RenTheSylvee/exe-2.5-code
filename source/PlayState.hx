@@ -1579,7 +1579,7 @@ class PlayState extends MusicBeatState
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
 
-		if (curSong.toLowerCase() == 'round-a-bout')
+		if (curSong.toLowerCase() == 'round-a-bout' && curStage == 'needle')
 		{
 			dad2 = new Character(0, 0, 'sarah');
 			startCharacterPos(dad2, true);
