@@ -612,8 +612,12 @@ class PreferencesSubstate extends MusicBeatSubstate
 				showCharacter.alpha = 0;
 			}
 			descText.alpha = 0;
-			//close(); //this too
-			closeSubState();
+			#if android
+				flixel.addons.transition.FlxTransitionableState.skipNextTransOut = true;
+			FlxG.resetState();
+			#else
+				close();
+			#end
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
