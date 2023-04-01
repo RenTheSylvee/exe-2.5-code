@@ -1560,7 +1560,7 @@ class PlayState extends MusicBeatState
 
 		trace(boyfriendGroup);
 		trace(dadGroup);
-		trace(dad2Group);
+		trace(Group);
 		trace(gfGroup);
 
 		var gfVersion:String = SONG.player3;
@@ -7165,7 +7165,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStep)
 			{
-				case 765:
+				 case 765:
 					FlxTween.tween(dad2, {alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
 				// funnyLargeTween();
 
@@ -7183,7 +7183,7 @@ class PlayState extends MusicBeatState
 						}
 						dad2.alpha += oki;
 
-						oki.reset();
+						ok.reset();
 					});
 			}
 		}
