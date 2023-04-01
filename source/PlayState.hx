@@ -7183,7 +7183,7 @@ class PlayState extends MusicBeatState
 						}
 						dad2.alpha += oki;
 
-	//					oki.reset();
+	  					oki = 0.0;
 					});
 			}
 		}
