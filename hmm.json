@@ -7,22 +7,22 @@
 		{
 			"name":"lime",
 			"type":"haxelib",
-      "version": 7.9.0
+      "version": 7.9
 		},
 		{
 			"name":"openfl",
 			"type":"haxelib",
-		  "version": 9.1.0
+		  "version": 9.1
 		},
 		{
 			"name":"flixel",
 			"type":"haxelib",
-			"version": 4.11.0
+			"version": 4.11
 		},
 		{
 			"name":"flixel-addons",
 			"type":"haxelib",
-      "version": 2.11.0
+      "version": 2.11
 		},
 		{
 			"name":"flixel-ui",
