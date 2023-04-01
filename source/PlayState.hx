@@ -1579,12 +1579,12 @@ class PlayState extends MusicBeatState
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
 
-		if (curSong.toLowerCase() == 'round-a-bout' && curStage == 'needle')
+		/*if (curSong.toLowerCase() == 'round-a-bout' && curStage == 'needle')
 		{
 			dad2 = new Character(0, 0, 'sarah');
 			startCharacterPos(dad2, true);
 			dad2Group.add(dad2);
-		}
+		}*/
 
 		dad = new Character(0, 0, SONG.player2);
 		startCharacterPos(dad, true);
@@ -7165,7 +7165,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStep)
 			{
-				case 765:
+				/*case 765:
 					FlxTween.tween(dad2, {alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
 				// funnyLargeTween();
 
@@ -7184,7 +7184,7 @@ class PlayState extends MusicBeatState
 						dad2.alpha += oki;
 
 						ok.reset();
-					});
+					});*/
 			}
 		}
 		if (SONG.song.toLowerCase() == 'fight or flight')
