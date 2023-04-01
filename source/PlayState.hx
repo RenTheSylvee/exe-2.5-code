@@ -1560,7 +1560,7 @@ class PlayState extends MusicBeatState
 
 		trace(boyfriendGroup);
 		trace(dadGroup);
-		trace(Group);
+		trace(dad2Group);
 		trace(gfGroup);
 
 		var gfVersion:String = SONG.player3;
@@ -7183,7 +7183,7 @@ class PlayState extends MusicBeatState
 						}
 						dad2.alpha += oki;
 
-						ok.reset();
+						oki.reset();
 					});
 			}
 		}
