@@ -1,0 +1,57 @@
+{
+	"dependencies":[
+		{
+			"name":"hxcpp",
+			"type":"haxelib"
+		},
+		{
+			"name":"lime",
+			"type":"haxelib",
+      "version": 7.9.0
+		},
+		{
+			"name":"openfl",
+			"type":"haxelib",
+		  "version": 9.1.0
+		},
+		{
+			"name":"flixel",
+			"type":"haxelib",
+			"version": 4.11.0
+		},
+		{
+			"name":"flixel-addons",
+			"type":"haxelib",
+      "version": 2.11.0
+		},
+		{
+			"name":"flixel-ui",
+			"type":"haxelib"
+		},
+		{
+			"name":"hxCodec",
+			"type":"git",
+			"ref":"main",
+			"url":"https://github.com/polybiusproxy/hxCodec.git"
+		},
+		{
+			"name":"polymod",
+			"type":"haxelib"
+		},
+		{
+			"name":"hscript",
+			"type":"haxelib"
+		},
+		{
+			"name":"extension-androidtools",
+			"type":"git",
+			"ref":"main",
+			"url":"https://github.com/Default-name123/oldtools.git"
+		},
+                {
+                       "name":"linc_luajit",
+			"type":"git",	
+                        "url":"https://github.com/sirox228/linc_luajit.git"
+                }
+	]
+}
