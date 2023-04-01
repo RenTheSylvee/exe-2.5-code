@@ -28,6 +28,10 @@
 			"name":"flixel-ui",
 			"type":"haxelib"
 		},
+	  {
+	    "name":"newgrounds",
+	    "type":"haxelib"
+	  },
 		{
 			"name":"hxCodec",
 			"type":"git",
